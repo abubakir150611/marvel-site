@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-comic: "Bangers", var(--font-display);
+}
+
+* {
+  scrollbar-color: #ED1D24 #0A0A0C;
+}
+
+html {
+  background: #0A0A0C;
+  cursor: none;
+}
+
+@media (max-width: 768px), (hover: none) {
+  html {
+    cursor: auto;
+  }
+}
+
+body {
+  background: #0A0A0C;
+  color: #F5F5F7;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0C;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ED1D24, #7F1D1D);
+  border-radius: 8px;
+}
+
+/* Comic halftone dot texture overlay */
+.halftone {
+  background-image: radial-gradient(rgba(237, 29, 36, 0.35) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+/* Comic panel border — thick ink outline with slight skew */
+.comic-panel {
+  border: 3px solid #0A0A0C;
+  box-shadow: 6px 6px 0px 0px rgba(237, 29, 36, 0.9), 0 0 0 1px rgba(255,255,255,0.05);
+  background: #121214;
+}
+
+.comic-title {
+  font-family: var(--font-comic);
+  letter-spacing: 0.03em;
+  -webkit-text-stroke: 1.5px #0A0A0C;
+}
+
+/* Glassmorphism card */
+.glass {
+  background: rgba(18, 18, 20, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-gradient-marvel {
+  background: linear-gradient(120deg, #ED1D24 0%, #F5F5F7 55%, #ED1D24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
+
+/* Custom cursor */
+.mcu-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  border: 2px solid #ED1D24;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+.mcu-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: #ED1D24;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+/* Energy scanline overlay for cinematic sections */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02) 0px,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
