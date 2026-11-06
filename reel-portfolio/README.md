@@ -8,10 +8,10 @@
 | Параметр | Значение |
 |---|---|
 | Кадр | 1080×1920, 9:16, 30 к/с |
-| Длительность | ≈ 32,6 с, 7 сцен |
+| Длительность | ≈ 36,8 с, 7 сцен |
 | Видео | H.264 High, yuv420p, BT.709, faststart |
-| Звук | AAC 48 кГц, −14 LUFS, пики ≤ −1,4 dBFS |
-| Озвучка | Piper «Dmitri» (локально, CC0) с обработкой звука |
+| Звук | AAC 48 кГц, −14 LUFS |
+| Озвучка | ElevenLabs, голос Pavel (eleven_v4, дубль 1 из 2), тайминги — ElevenLabs Scribe |
 | Музыка | оригинальный бит, синтезирован кодом (`scripts/make-audio.mjs`) |
 
 ## Сцены
@@ -34,11 +34,12 @@
 - В HUD на этих сценах стоит «● Настоящие сайты · демо-данные».
 - Карточки, кнопки «Директ»/«Телеграм» и значки нарисованы кодом.
 
-## Озвучка ElevenLabs (Pavel)
+## Озвучка
 
-Сгенерированы 2 дубля голосом Pavel (flow «Рилс: мои сайты», по 33,7 с), но сеть сессии не
-пускает на `elevenlabsusercontent.com`. Чтобы подставить: скачать MP3 → `public/reel/voiceover.mp3`,
-расшифровку Scribe → `src/vo-words.json`, затем `npm run timeline && npm run audio && npm run render && npm run finalize`.
+Голос — ElevenLabs Pavel (flow «Рилс: мои сайты», дубль 1; второй дубль там же).
+Запасной вариант без интернета — Piper «Dmitri»: `venv/bin/python scripts/tts-local.py <модель>`.
+Важно: на бесплатном тарифе ElevenLabs коммерческое использование запрещено и нужно указывать
+авторство — для рекламы услуг нужен платный тариф (Starter и выше).
 
 ## Подпись и хэштеги
 
@@ -53,4 +54,4 @@
 
 ## Лицензии
 
-Шрифты — SIL OFL 1.1 (`public/fonts/`). Remotion — remotion.dev/license. Голос Piper «Dmitri» — CC0.
+Шрифты — SIL OFL 1.1 (`public/fonts/`). Remotion — remotion.dev/license. Голос — ElevenLabs (условия тарифа выше).

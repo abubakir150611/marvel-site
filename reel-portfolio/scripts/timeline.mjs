@@ -88,7 +88,7 @@ function align(spoken) {
 const estimated = process.argv.includes("--estimate");
 const words = estimated
   ? estimate()
-  : align(JSON.parse(readFileSync(path.join(dir, "vo-words.json"), "utf8")).words.filter((w) => (w.type ?? "word") === "word" && w.text.trim() !== "—"));
+  : align(JSON.parse(readFileSync(path.join(dir, "vo-words.json"), "utf8")).words.filter((w) => (w.type ?? "word") === "word" && w.text.trim() !== "—" && !/^\[.*\]$/.test(w.text.trim())));
 
 const f = (t) => Math.round((t + OFFSET) * FPS);
 
