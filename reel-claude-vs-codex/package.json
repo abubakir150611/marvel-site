@@ -1,0 +1,32 @@
+{
+  "name": "claude-code-vs-codex-reel",
+  "version": "1.0.0",
+  "description": "Вертикальный рилс «Claude Code vs Codex» (Remotion, 9:16)",
+  "private": true,
+  "license": "UNLICENSED",
+  "engines": { "node": "^20.19.0 || ^22.13.0 || >=24" },
+  "dependencies": {
+    "@remotion/cli": "4.0.539",
+    "@remotion/fonts": "4.0.539",
+    "@remotion/media": "4.0.539",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.539"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.539",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "10.12.0",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "timeline": "node scripts/timeline.mjs",
+    "audio": "node scripts/make-audio.mjs",
+    "render": "remotion render CodeVsCodexReel out/reel-master.mp4 --crf=16",
+    "finalize": "remotion ffmpeg -y -i out/reel-master.mp4 -c:v libx264 -preset slow -crf 18 -pix_fmt yuv420p -vf scale=in_range=full:out_range=tv -color_range tv -colorspace bt709 -color_primaries bt709 -color_trc bt709 -movflags +faststart -c:a copy render/claude-code-vs-codex.mp4",
+    "lint": "eslint src && tsc"
+  },
+  "allowScripts": { "esbuild": false }
+}
